@@ -19,8 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
-
-
+from students.views import index
 schema_view = get_schema_view(
     openapi.Info(title='Webbrain API',default_version='1.0.0'),
     public=True,
@@ -29,6 +28,7 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
+    path('',index,name='index'),
     path('admin/', admin.site.urls),
     path('api/',include([
         path('',include('students.urls')),
